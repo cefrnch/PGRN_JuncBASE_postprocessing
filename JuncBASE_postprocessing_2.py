@@ -171,6 +171,19 @@ def main():
 # END_MAIN #
 ############
 
+def formatLine(line):
+    line = line.replace("\r","")
+    line = line.replace("\n","")
+    return line
+
+def fixChr(c, fl='+'):
+    if fl == '+' and not c.startswith('chr'):
+        return 'chr' + c
+    elif fl == '-':
+        return c.replace('chr','')
+    else:
+        return c;
+        
 def addJuncEvent2groups(event, groups):
 
     ASclass, groupID, eventID, gene, chrom, strand, excl_j, incl_j, excl_e, incl_e, data = \
